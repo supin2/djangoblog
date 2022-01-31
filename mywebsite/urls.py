@@ -26,4 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')), # /blog 주소가 들어오면 blog 앱으로 처리를 넘김
     path("", RedirectView.as_view(url='/blog/', permanent=True)), # 기본 url로 들어올 시에 처리
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # JavaScript, CSS, image파일(Static 파일들)을 처리할 수 있도록 하는 세팅
+] # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # JavaScript, CSS, image파일(Static 파일들)을 처리할 수 있도록 하는 세팅
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
